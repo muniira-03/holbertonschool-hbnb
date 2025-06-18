@@ -1,4 +1,3 @@
-# holbertonschool-hbnb
 # HBnB Evolution - Technical Documentation
 
 ##  Project Overview
