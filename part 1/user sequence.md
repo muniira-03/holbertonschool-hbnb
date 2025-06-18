@@ -1,14 +1,15 @@
+## ✅ Sequence Diagram: User Registration
+
 ```mermaid
 sequenceDiagram
     participant User
-    participant API
-    participant BusinessLogic
-    participant Database
+    participant API as "API /register"
+    participant Service as "UserService"
+    participant DB as "Database"
 
-    User->>API: POST /register
-    API->>BusinessLogic: validate_user_data(data)
-    BusinessLogic->>Database: create_user(data)
-    Database-->>BusinessLogic: success
-    BusinessLogic-->>API: return success
-    API-->>User: 201 Created
-```
+    User->>API: POST /register {name, email, password}
+    API->>Service: validateAndCreateUser(data)
+    Service->>DB: insertUser(data)
+    DB-->>Service: success
+    Service-->>API: return 201 + userJSON
+    API-->>User: 201 Created (user info)
