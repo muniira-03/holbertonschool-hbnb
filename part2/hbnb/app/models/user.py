@@ -1,5 +1,5 @@
 # app/models/user.py
-from app.models.base import BaseModel
+from app.services.facade import create_user, get_user_by_id, get_all_users, update_user
 
 class User(BaseModel):
     def __init__(self, username, email, password, **kwargs):
