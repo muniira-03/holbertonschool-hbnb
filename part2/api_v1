@@ -1,0 +1,16 @@
+# part2/hbnb/app/api/v1/__init__.py
+from flask import Blueprint
+from flask_restx import Api
+
+from .users import ns as user_ns
+from .places import ns as place_ns
+from .reviews import ns as review_ns
+from .amenities import ns as amenity_ns
+
+api_v1 = Blueprint('api_v1', __name__, url_prefix="/api/v1")
+api = Api(api_v1, version="1.0", title="HBnB API", description="HBnB Clone API")
+
+api.add_namespace(user_ns)
+api.add_namespace(place_ns)
+api.add_namespace(review_ns)
+api.add_namespace(amenity_ns)
