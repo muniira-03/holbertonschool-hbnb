@@ -1,9 +1,11 @@
-from flask import Flask
-from flask_restx import Api
-from hbnb.app.api.v1 import api_v1
+from flask_jwt_extended import JWTManager
 
-def create_app(config_obj):
+def create_app(config_class=Config):
     app = Flask(__name__)
-    app.config.from_object(config_obj)
-    app.register_blueprint(api_v1)
+    app.config.from_object(config_class)
+
+    bcrypt.init_app(app)
+    jwt = JWTManager(app)
+
+
     return app
