@@ -14,7 +14,7 @@ login_model = ns.model('Login', {
 class Login(Resource):
     @ns.expect(login_model)
     def post(self):
-        data = request.get_json()
+        data = request.get_json() 
         user = User.query.filter_by(email=data['email']).first()
         if user and user.check_password(data['password']):
             claims = {"is_admin": user.is_admin}
