@@ -1,7 +1,6 @@
 from flask import Flask
 from hbnb.api.v1.auth import ns as auth_ns
 from flask_restx import Api
-from hbnb.app import db
 
 def create_app(config_class=None):
     app = Flask(__name__)
