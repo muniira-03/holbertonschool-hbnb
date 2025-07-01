@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_jwt_extended import JWTManager
-from .confing import Config  
+from .config import Config  
 from hbnb.app.api.v1 import api_v1
 
 jwt = JWTManager()
