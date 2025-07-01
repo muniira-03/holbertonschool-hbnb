@@ -1,7 +1,7 @@
 from flask_restx import Namespace, Resource, fields
 from flask import request
 from flask_jwt_extended import create_access_token
-from hbnb.models.user import User
+from hbnb.app.models.user import User
 
 ns = Namespace("auth", description="Auth operations")
 
