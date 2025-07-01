@@ -1,7 +1,7 @@
 from datetime import datetime
 import uuid
 from werkzeug.security import generate_password_hash, check_password_hash
-from .. import db
+from hbnb.app import db
 
 class User(db.Model):
     id = db.Column(db.String, primary_key=True, default=lambda: str(uuid.uuid4()))
