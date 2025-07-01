@@ -1,4 +1,5 @@
 class Config:
-    DEBUG = True
-    SECRET_KEY = 'super-secret-key'
-    JWT_SECRET_KEY = 'your_jwt_secret_key_here'
+    SECRET_KEY = "your_secret_key"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///hbnb.db"
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    JWT_SECRET_KEY = "your_jwt_secret"
