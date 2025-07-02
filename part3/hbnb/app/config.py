@@ -1,4 +1,5 @@
 import os
+from .config import Config
 
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'your_secret_key_here')
