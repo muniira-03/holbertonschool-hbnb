@@ -14,7 +14,6 @@ user_model = ns.model('User', {
 class RegisterUser(Resource):
     @ns.expect(user_model, validate=True)
     def post(self):
-        """Register a new user"""
         data = request.json
         email = data.get('email')
         password = data.get('password')
