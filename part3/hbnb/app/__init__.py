@@ -1,8 +1,9 @@
-from flask_jwt_extended import JWTManager
 from flask import Flask
+from flask_jwt_extended import JWTManager
+from flask_restx import Api
 from hbnb.app.config import Config
-from hbnb.app.api.v1.users import users as users_blueprint
 from hbnb.app.models.db import db
+from hbnb.app.api.v1.users import ns as users_namespace
 
 jwt = JWTManager()
 
@@ -13,6 +14,7 @@ def create_app(config_class=Config):
     db.init_app(app)
     jwt.init_app(app)
 
-    app.register_blueprint(users_blueprint)
+    api = Api(app, version='1.0', title='HBnB API')
+    api.add_namespace(users_namespace, path='/api/v1/users')
 
     return app
