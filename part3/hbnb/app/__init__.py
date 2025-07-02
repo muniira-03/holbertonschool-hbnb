@@ -3,9 +3,10 @@ from flask_jwt_extended import JWTManager
 from flask_sqlalchemy import SQLAlchemy
 from .config import Config  
 from hbnb.app.api.v1 import api_v1
+from hbnb.app.models.db import db
 
 jwt = JWTManager()
-db = SQLAlchemy()  
+ 
 
 def create_app(config_class=Config):
     app = Flask(__name__)
