@@ -1,6 +1,6 @@
 from flask_restx import Namespace, Resource, fields
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from hbnb.app.db import db
+from hbnb.app.models.db import db
 from hbnb.app.models.place import Place
 
 ns = Namespace("places", description="Place operations")
