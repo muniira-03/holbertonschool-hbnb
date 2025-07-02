@@ -1,14 +1,18 @@
 from flask import Flask
-from hbnb.api.v1.auth import ns as auth_ns
-from flask_restx import Api
+from flask_jwt_extended import JWTManager
+from .config import Config
+from hbnb.app.api.v1 import api_v1
+from hbnb.app.models.db import db  
 
-def create_app(config_class=None):
+jwt = JWTManager()
+
+def create_app(config_class=Config):
     app = Flask(__name__)
-    if config_class:
-        app.config.from_object(config_class)
+    app.config.from_object(config_class)
 
-    api = Api(app, version='1.0', title='HBnB API', description='HBnB Clone API')
+    db.init_app(app)  
+    jwt.init_app(app)
 
-    api.add_namespace(auth_ns, path='/api/v1/auth')
+    app.register_blueprint(api_v1)
 
     return app
