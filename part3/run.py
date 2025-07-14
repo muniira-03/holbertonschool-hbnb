@@ -1,4 +1,5 @@
 from hbnb.app import create_app, db
+from hbnb.app.models import user, place, review, amenity  
 
 app = create_app()
 
