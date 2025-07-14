@@ -1,19 +1,16 @@
 from hbnb.app.models.db import db
-
-place_amenities = db.Table('place_amenities',
-    db.Column('place_id', db.Integer, db.ForeignKey('place.id'), primary_key=True),
-    db.Column('amenity_id', db.Integer, db.ForeignKey('amenity.id'), primary_key=True)
-)
+from hbnb.app.models.associations import place_amenities 
 
 class Place(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(500))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
-    user = db.relationship('User', backref='places')
-    reviews = db.relationship('Review', back_populates='place', cascade='all, delete-orphan')
-    amenities = db.relationship('Amenity', secondary=place_amenities, back_populates='places')
+    
+    amenities = db.relationship(
+        'Amenity',
+        secondary=place_amenities,
+        back_populates='places'
+    )
 
     def to_dict(self):
         return {
