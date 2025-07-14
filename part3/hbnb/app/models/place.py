@@ -13,7 +13,7 @@ class Place(db.Model):
 
     user = db.relationship('User', backref='places')
     reviews = db.relationship('Review', back_populates='place', cascade='all, delete-orphan')
-    amenities = db.relationship('Amenity', secondary=place_amenities, backref='places')
+    amenities = db.relationship('Amenity', secondary=place_amenities, back_populates='places')
 
     def to_dict(self):
         return {
